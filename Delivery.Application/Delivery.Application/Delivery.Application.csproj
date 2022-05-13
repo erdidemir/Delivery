@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Commands\Cargos\Deletes\" />
+    <Folder Include="Features\Commands\Cargos\Updates\" />
     <Folder Include="Features\Queries\Cargos\GerCargo\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
 
   <ItemGroup>

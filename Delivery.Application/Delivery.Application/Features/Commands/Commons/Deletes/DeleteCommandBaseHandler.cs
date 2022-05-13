@@ -15,18 +15,15 @@ namespace Delivery.Application.Features.Commands.Commons.Deletes
     public class DeleteCommandBaseHandler<T> : IRequestHandler<DeleteCommandBase<T>, ResponseViewModelBase<NoContent>> where T : EntityBase
     {
         protected readonly IMapper _mapper;
-        protected readonly IServiceBase<T> _service;
 
         public DeleteCommandBaseHandler(IMapper mapper,
             IServiceBase<T> service)
         {
-            _service = service;
             _mapper = mapper;
         }
 
         public virtual async Task<ResponseViewModelBase<NoContent>> Handle(DeleteCommandBase<T> request, CancellationToken cancellationToken)
         {
-            await _service.RemoveAsync(request.Entity);
             return ResponseViewModelBase<NoContent>.Success(204);
         }
     }

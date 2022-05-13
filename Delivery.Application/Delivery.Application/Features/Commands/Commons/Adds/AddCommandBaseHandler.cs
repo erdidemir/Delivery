@@ -12,21 +12,14 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Commands.Commons.Adds
 {
-    public class AddCommandBaseHandler<T> : IRequestHandler<AddCommandBase<T>, ResponseViewModelBase<NoContent>> where T : EntityBase
+    public class AddCommandBaseHandler<T> : IRequestHandler<AddCommandBase<T>, ResponseViewModelBase<NoContent>> where T : class
     {
-        protected readonly IMapper _mapper;
-        protected readonly IServiceBase<T> _service;
-
-        public AddCommandBaseHandler(IMapper mapper,
-            IServiceBase<T> service)
+        public AddCommandBaseHandler()
         {
-            _service = service;
-            _mapper = mapper;
         }
 
         public virtual async Task<ResponseViewModelBase<NoContent>> Handle(AddCommandBase<T> request, CancellationToken cancellationToken)
         {
-            await _service.AddAsync(request.Entity);
             return ResponseViewModelBase<NoContent>.Success(201);
         }
     }
