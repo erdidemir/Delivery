@@ -71,11 +71,17 @@ namespace Delivery.Api.Controllers
             var roleClaims = userModel.Roles.Select(r => new Claim(ClaimTypes.Role, r));
             claims.AddRange(roleClaims);
 
+            //Security  Key'in alıyoruz.
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+
+            //Şifrelenmiş kimliği oluşturuyoruz.
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            //Bitiş Zamanını ayarlayabiliyoruz
             var expires = DateTime.Now.AddDays(Convert.ToDouble(_jwtSettings.ExpirationInDays));
 
-            var token = new JwtSecurityToken(
+            // Oluşturulacak token ayarlarını veriyoruz.
+             var token = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Issuer,
                 claims,
