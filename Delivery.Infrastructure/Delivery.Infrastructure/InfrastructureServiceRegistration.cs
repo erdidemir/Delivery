@@ -2,11 +2,13 @@
 using Delivery.Application.Contracts.Repositories.Deliveries;
 using Delivery.Application.Services.Commons;
 using Delivery.Application.Services.Deliveries;
+using Delivery.Application.Services.Cargos;
 using Delivery.Infrastructure.Contracts;
 using Delivery.Infrastructure.Contracts.Repositories.Commons;
 using Delivery.Infrastructure.Contracts.Repositories.Deliveries;
 using Delivery.Infrastructure.Services.Commons;
 using Delivery.Infrastructure.Services.Deliveries;
+using Delivery.Infrastructure.Services.Cargos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Delivery.Application.Contracts.Repositories.Cargos;
+using Delivery.Infrastructure.Contracts.Repositories.Cargos;
 
 namespace Delivery.Infrastructure
 {
@@ -45,6 +49,18 @@ namespace Delivery.Infrastructure
             services.AddTransient(typeof(IShipmentWriteRepository), typeof(ShipmentWriteRepository));
 
             services.AddTransient(typeof(IShipmentService), typeof(ShipmentService));
+
+
+
+            #endregion
+
+
+            #region Cargos
+
+            services.AddTransient(typeof(ICargoReadRepository), typeof(CargoReadRepository));
+            services.AddTransient(typeof(ICargoWriteRepository), typeof(CargoWriteRepository));
+
+            services.AddTransient(typeof(ICargoService), typeof(CargoService));
 
 
 

@@ -5,9 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Queries\" />
+    <Folder Include="Features\Queries\Cargos\GerCargo\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>

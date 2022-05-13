@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Delivery.Application.Responses;
+using Delivery.Application.Models.Commons;
 using Delivery.Application.Services.Deliveries;
 using Delivery.Domain.Entities.Deliveries;
 using MediatR;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Commands.Deliveries.AddShipment
 {
-    public class AddShipmentCommandHandler : IRequestHandler<AddShipmentCommand, ResponseBase>
+    public class AddShipmentCommandHandler : IRequestHandler<AddShipmentCommand, ResponseModelBase<int>>
 
     {
         private readonly IShipmentService _shipmentService;
@@ -24,7 +24,7 @@ namespace Delivery.Application.Features.Commands.Deliveries.AddShipment
             _shipmentService = shipmentService;
             _mapper = mapper;
         }
-        public async Task<ResponseBase> Handle(AddShipmentCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseModelBase<int>> Handle(AddShipmentCommand request, CancellationToken cancellationToken)
         {
             var shipmentEntity = _mapper.Map<Shipment>(request);
 

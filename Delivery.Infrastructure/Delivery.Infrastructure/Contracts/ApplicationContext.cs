@@ -1,5 +1,6 @@
 ﻿using Delivery.Domain.Configurations.Deliveries;
 using Delivery.Domain.Entities.Authentications;
+using Delivery.Domain.Entities.Cargos;
 using Delivery.Domain.Entities.Commons;
 using Delivery.Domain.Entities.Deliveries;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace Delivery.Infrastructure.Contracts
                 switch (entry.State)
                 {
                     case EntityState.Added:
+                        entry.Entity.IsActive = true;
                         entry.Entity.CreatedDate = DateTime.Now;
                         entry.Entity.LastModifiedDate = DateTime.Now;
 
@@ -52,6 +54,13 @@ namespace Delivery.Infrastructure.Contracts
         #region Deliveries
 
         public DbSet<Shipment> Shipments { get; set; }
+
+        #endregion
+
+        #region Cargos
+
+        public DbSet<Cargo> Cargos { get; set; }
+
 
         #endregion
 
