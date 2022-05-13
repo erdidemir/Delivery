@@ -32,11 +32,13 @@ namespace Delivery.Infrastructure
 
             #region Commons
 
-            services.AddTransient(typeof(IRepositoryBase<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
-            services.AddTransient(typeof(IRepositoryBase<>), typeof(WriteRepository<>));
 
-            services.AddTransient(typeof(IServiceBase<>), typeof(ServiceBase<>));
+
+
+            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
 
 
 
@@ -45,10 +47,9 @@ namespace Delivery.Infrastructure
 
             #region Deliveries
 
-            services.AddTransient(typeof(IShipmentReadRepository), typeof(ShipmentReadRepository));
-            services.AddTransient(typeof(IShipmentWriteRepository), typeof(ShipmentWriteRepository));
-
-            services.AddTransient(typeof(IShipmentService), typeof(ShipmentService));
+            services.AddScoped<IShipmentReadRepository, ShipmentReadRepository>();
+            services.AddScoped<IShipmentWriteRepository, ShipmentWriteRepository>();
+            services.AddScoped<IShipmentService, ShipmentService>();
 
 
 
@@ -57,10 +58,9 @@ namespace Delivery.Infrastructure
 
             #region Cargos
 
-            services.AddTransient(typeof(ICargoReadRepository), typeof(CargoReadRepository));
-            services.AddTransient(typeof(ICargoWriteRepository), typeof(CargoWriteRepository));
-
-            services.AddTransient(typeof(ICargoService), typeof(CargoService));
+            services.AddScoped<ICargoReadRepository, CargoReadRepository>();
+            services.AddScoped<ICargoWriteRepository, CargoWriteRepository>();
+            services.AddScoped<ICargoService, CargoService>();
 
 
 

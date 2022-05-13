@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetById
 {
-    public abstract class GetByIdQueryHandler<T> : IRequestHandler<GetByIdQuery<T>, ResponseModelBase<T>> where T : class
+    public abstract class GetByIdQueryHandler<T> : IRequestHandler<GetByIdQuery<T>, ResponseViewModelBase<T>> where T : class
     {
         private readonly IMapper _mapper;
         protected EntityBase _baseEntity { get; set; }
@@ -21,9 +21,9 @@ namespace Delivery.Application.Features.Queries.Commons.GetById
             _mapper = mapper;
         }
 
-        public virtual async Task<ResponseModelBase<T>> Handle(GetByIdQuery<T> request, CancellationToken cancellationToken)
+        public virtual async Task<ResponseViewModelBase<T>> Handle(GetByIdQuery<T> request, CancellationToken cancellationToken)
         {
-            return ResponseModelBase<T>.Success(_mapper.Map<T>(_baseEntity), 200);
+            return ResponseViewModelBase<T>.Success(_mapper.Map<T>(_baseEntity), 200);
         }
     }
 }

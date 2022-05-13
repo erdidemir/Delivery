@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetBySearchKeyword
 {
-    public abstract class GetBySearchQueryHandler<T> : IRequestHandler<GetBySearchKeywordQuery<T>, ResponseModelBase<IReadOnlyList<T>>> where T : class
+    public abstract class GetBySearchQueryHandler<T> : IRequestHandler<GetBySearchKeywordQuery<T>, ResponseViewModelBase<IReadOnlyList<T>>> where T : class
     {
         private readonly IMapper _mapper;
         protected IReadOnlyList<EntityBase> _baseEntities { get; set; }
@@ -21,9 +21,9 @@ namespace Delivery.Application.Features.Queries.Commons.GetBySearchKeyword
             _mapper = mapper;
         }
 
-        public virtual async Task<ResponseModelBase<IReadOnlyList<T>>> Handle(GetBySearchKeywordQuery<T> request, CancellationToken cancellationToken)
+        public virtual async Task<ResponseViewModelBase<IReadOnlyList<T>>> Handle(GetBySearchKeywordQuery<T> request, CancellationToken cancellationToken)
         {
-            return ResponseModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), 200);
+            return ResponseViewModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), 200);
         }
     }
 }

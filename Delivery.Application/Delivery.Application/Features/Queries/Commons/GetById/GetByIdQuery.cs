@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetById
 {
-    public class GetByIdQuery<T> : IRequest<ResponseModelBase<T>> where T : class
+    public class GetByIdQuery<T> : IRequest<ResponseViewModelBase<T>> where T : class
     {
         public int Id { get; set; }
     }

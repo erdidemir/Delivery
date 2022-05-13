@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetAll
 {
-    public abstract class GetAllQueryHandler<T> : IRequestHandler<GetAllQuery<T>, ResponseModelBase<IReadOnlyList<T>>>
+    public abstract class GetAllQueryHandler<T> : IRequestHandler<GetAllQuery<T>, ResponseViewModelBase<IReadOnlyList<T>>>
         where T : class
     {
         protected readonly IMapper _mapper;
@@ -22,9 +22,9 @@ namespace Delivery.Application.Features.Queries.Commons.GetAll
             _mapper = mapper;
         }
 
-        public virtual async Task<ResponseModelBase<IReadOnlyList<T>>> Handle(GetAllQuery<T> request, CancellationToken cancellationToken)
+        public virtual async Task<ResponseViewModelBase<IReadOnlyList<T>>> Handle(GetAllQuery<T> request, CancellationToken cancellationToken)
         {
-            return ResponseModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), 200);
+            return ResponseViewModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), 200);
         }
     }
 }

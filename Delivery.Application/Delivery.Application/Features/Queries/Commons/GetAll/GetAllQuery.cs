@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetAll
 {
-    public class GetAllQuery<T> : IRequest<ResponseModelBase<IReadOnlyList<T>>> where T : class
+    public class GetAllQuery<T> : IRequest<ResponseViewModelBase<IReadOnlyList<T>>> where T : class
     {
     }
 }

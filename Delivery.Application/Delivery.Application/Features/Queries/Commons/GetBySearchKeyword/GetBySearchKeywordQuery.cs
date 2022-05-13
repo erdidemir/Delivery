@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Delivery.Application.Features.Queries.Commons.GetBySearchKeyword
 {
-    public class GetBySearchKeywordQuery<T> : IRequest<ResponseModelBase<IReadOnlyList<T>>> where T : class
+    public class GetBySearchKeywordQuery<T> : IRequest<ResponseViewModelBase<IReadOnlyList<T>>> where T : class
     {
         public string Keyword { get; set; }
     }
