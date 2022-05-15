@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Delivery.Api.Controllers
 {
-    public class CargoController : CustomControllerBase<Cargo, AddCargoCommand>
+    public class CargoController : CustomControllerBase<CargoViewModel, AddCargoCommand>
     {
         public CargoController(IMediator mediator) : base(mediator)
         {
