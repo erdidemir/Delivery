@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Delivery.Application.Models.Commons;
 using Delivery.Domain.Entities.Commons;
+using Delivery.Domain.Enums.Commons;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Delivery.Application.Features.Queries.Commons.GetAll
 
         public virtual async Task<ResponseViewModelBase<IReadOnlyList<T>>> Handle(GetAllQuery<T> request, CancellationToken cancellationToken)
         {
-            return ResponseViewModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), 200);
+            return ResponseViewModelBase<IReadOnlyList<T>>.Success(_mapper.Map<IReadOnlyList<T>>(_baseEntities), ResultTypeEnum.Success);
         }
     }
 }

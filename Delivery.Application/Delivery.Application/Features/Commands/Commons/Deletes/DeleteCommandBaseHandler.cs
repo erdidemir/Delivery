@@ -2,6 +2,7 @@
 using Delivery.Application.Models.Commons;
 using Delivery.Application.Services.Commons;
 using Delivery.Domain.Entities.Commons;
+using Delivery.Domain.Enums.Commons;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace Delivery.Application.Features.Commands.Commons.Deletes
 
         public virtual async Task<ResponseViewModelBase<NoContent>> Handle(DeleteCommandBase<T> request, CancellationToken cancellationToken)
         {
-            return ResponseViewModelBase<NoContent>.Success(204);
+            return ResponseViewModelBase<NoContent>.Success(ResultTypeEnum.Success);
         }
     }
 }

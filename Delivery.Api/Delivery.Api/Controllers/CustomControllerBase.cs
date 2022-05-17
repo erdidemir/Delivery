@@ -4,6 +4,7 @@ using Delivery.Application.Features.Queries.Commons.GetAll;
 using Delivery.Application.Features.Queries.Commons.GetById;
 using Delivery.Application.Features.Queries.Commons.GetBySearchKeyword;
 using Delivery.Application.Models.Commons;
+using Delivery.Domain.Enums.Commons;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +54,7 @@ namespace Delivery.Api.Controllers
                 var response = await _mediator.Send(new AddCommandBase<R>() { Entity = request.Entity });
                 return CreateActionResult(response);
             }
-            return CreateActionResult(ResponseViewModelBase<NoContent>.Fail("Inputs are not valid", 404));
+            return CreateActionResult(ResponseViewModelBase<NoContent>.Fail("Inputs are not valid", ResultTypeEnum.Error));
         }
 
         [HttpDelete]
@@ -66,10 +67,10 @@ namespace Delivery.Api.Controllers
         [NonAction]
         public IActionResult CreateActionResult<T>(ResponseViewModelBase<T> response)
         {
-            if (response.StatusCode == 204)
-                return new ObjectResult(null) { StatusCode = response.StatusCode };
+            //if (response.ResultType == ResultTypeEnum.Error)
+            //    return new ObjectResult(null) { StatusCode = 404 };
 
-            return new ObjectResult(response) { StatusCode = response.StatusCode };
+            return new ObjectResult(response) {  StatusCode  = 200 };
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Delivery.Application.Models.Commons;
 using Delivery.Domain.Entities.Commons;
+using Delivery.Domain.Enums.Commons;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Delivery.Application.Features.Queries.Commons.GetById
 
         public virtual async Task<ResponseViewModelBase<T>> Handle(GetByIdQuery<T> request, CancellationToken cancellationToken)
         {
-            return ResponseViewModelBase<T>.Success(_mapper.Map<T>(_baseEntity), 200);
+            return ResponseViewModelBase<T>.Success(_mapper.Map<T>(_baseEntity), ResultTypeEnum.Success);
         }
     }
 }
